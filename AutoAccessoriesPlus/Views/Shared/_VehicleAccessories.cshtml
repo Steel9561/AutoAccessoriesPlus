@@ -1,0 +1,24 @@
+﻿@model AutoAccessoriesPlus.Models.Vehicle
+
+<div>
+    <hr />   
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <td><h3>Name</h3></td>
+                <td><h3>Price</h3></td>
+                <td><h3>Description</h3></td>
+            </tr>
+        </thead>
+        @foreach (var va in Model.VehicleBrandAccessories)
+        {                
+            <tbody>
+                <tr>
+                    <td><h4>@va.RelatedAccessory.Name</h4></td>
+                    <td><h4>@va.RelatedAccessory.Price</h4></td>
+                    <td><h4>@va.RelatedAccessory.Description</h4></td>
+                </tr>
+            </tbody>         
+         }
+        </table>    
+</div>

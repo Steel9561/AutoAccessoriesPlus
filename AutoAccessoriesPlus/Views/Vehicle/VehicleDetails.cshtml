@@ -1,0 +1,51 @@
+﻿@model AutoAccessoriesPlus.Models.Vehicle
+
+@{
+    ViewData["Title"] = "Vehicle Details";
+}
+
+<h1>Vehicle Details for @Model.Make,@Model.Model - @Model.Year</h1>
+
+<div class="container">
+    <hr />
+    <dl class="row">
+        <div class="col" align="center">
+            <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 24rem;">
+                <img name="VehicleImage" src='@Url.Action("RetriveImageFromDB", "Vehicle", new { id = Model.Id })' alt="Vehicle Image" class="card-img-top" height="300" width="350" />
+            </div>
+        </div>
+        <div class="col">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Make)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Make)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Model)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Model)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Type)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Type)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Year)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Year)
+            </dd>
+        </div>
+    </dl>
+</div>
+
+@await Html.PartialAsync("_VehicleAccessories") 
+
+<div>
+    <a asp-action="EditVehicle" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="ListVehicles">Back to List</a>
+</div>
