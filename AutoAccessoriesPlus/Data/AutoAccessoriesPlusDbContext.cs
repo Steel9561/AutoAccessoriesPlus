@@ -22,8 +22,6 @@ namespace AutoAccessoriesPlus.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
-        
-            //if (builder.Entity<IdentityUser>().ToTable)
             const string USER_ID = "03895gh1–8321–5bef-bgea-48t832w83ey7";
             const string ROLE_ID = "532467h2-hfr4–63ej-nhre-75shrewf89r8";
             
