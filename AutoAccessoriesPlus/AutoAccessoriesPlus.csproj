@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-AutoAccessoriesPlus-7C10F943-A748-4DF1-868B-4017AA5D33B8</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20201102015446_AddVehicleAccessories.cs" />
+    <Compile Remove="Data\Migrations\20201102015446_AddVehicleAccessories.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201102015559_AddVehicleAccessories.cs" />
+    <Compile Remove="Data\Migrations\20201102015559_AddVehicleAccessories.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201102020832_VehicleID.cs" />
+    <Compile Remove="Data\Migrations\20201102020832_VehicleID.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201102201532_ModelClassesComplete.cs" />
+    <Compile Remove="Data\Migrations\20201102201532_ModelClassesComplete.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="8.0.7" />
+  </ItemGroup>
+
+</Project>

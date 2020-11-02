@@ -1,0 +1,72 @@
+﻿@model AutoAccessoriesPlus.Models.Vehicle
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Vehicle</h1>
+
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col" align="center">
+            <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 24rem;">
+                <img src='@Url.Action("RetriveImageFromDB", "Vehicle", new { id = Model.Id })' alt="Vehicle Image" class="card-img-top" height="300" width="350" />
+            </div>
+        </div>
+        <div class="col">
+            <div class="col-md-4">
+                @using (Html.BeginForm("Edit", "Vehicle", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="Make" class="control-label"></label>
+                        <input asp-for="Make" class="form-control" />
+                        <span asp-validation-for="Make" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Model" class="control-label"></label>
+                        <input asp-for="Model" class="form-control" />
+                        <span asp-validation-for="Model" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Type" class="control-label"></label>
+                        <select asp-for="Type" class="form-control">
+                            <option value="0">Economy</option>
+                            <option value="1">Truck</option>
+                            <option value="2">FullSize</option>
+                        </select>
+                        <span asp-validation-for="Type" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Year" class="control-label"></label>
+                        <input asp-for="Year" class="form-control" />
+                        <span asp-validation-for="Year" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="VehicleImage" class="control-label"></label>
+                        <input asp-for="VehicleImage" type="file" name="fileToUpload" />
+                        <br />
+                        <br />
+                        <span asp-validation-for="VehicleImage" class="text-danger">
+                            @ViewBag.ErrorUploadingImage
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+    <div>
+        <a asp-action="ListVehicles">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

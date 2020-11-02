@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewData["Title"] = "Vehicles";    
+}
+
+@using X.PagedList.Mvc.Core
+@using X.PagedList;
+@using X.PagedList.Mvc.Core.Common;
+
+@model VehiclePagingInfo
+
+
+<link rel="stylesheet" href="~/css/ListVehicles.css" />
+
+    <div class="container">
+
+        @using (Html.BeginForm())
+        {
+            <a asp-area="" asp-action="AddVehicle"  class="btn btn-info btn-lg text-white">Add Vehicle</a>
+            <br />
+            <br />
+            <div class="input-group">
+                <input type="text" name="searchByMake" placeholder="Please enter Vehicle Make or leave blank to display ALL">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <td><h3>Picture</h3></td>
+                        <td><h3>Make</h3></td>
+                        <td><h3>Model</h3></td>
+                        <td><h3>Year</h3></td>
+                        <td><h3>Action</h3></td>
+                    </tr>
+                </thead>                
+                <tbody>
+                    @if (Model.Vehicles == null)
+                    {
+                        <br />
+                        <b>There are currently no vehicles...</b>
+                        <br />
+                    }
+                    else
+                    {
+                        @foreach (var veh in Model.Vehicles)
+                        {
+                            <tr>
+                                <td><a asp-area="" asp-action="VehicleDetails" asp-route-id="@veh.Id">
+                                    <img class="border border-primary" src='@Url.Action("RetriveImageFromDB", "Vehicle", new { id = veh.Id })' height="300" width="350" /></a></td>
+                                <td><h4>@veh.Make</h4></td>
+                                <td><h4>@veh.Model</h4></td>
+                                <td><h4>@veh.Year</h4></td>
+                                <td>                                   
+                                    <a asp-area="" asp-action="EditVehicle" asp-route-id="@veh.Id"
+                                       class="btn btn-success btn-lg m-1">Edit</a>
+                                    <button type="submit" asp-controller="Vehicle" asp-action="OnPostDelete" asp-route-id="@veh.Id"
+                                            onclick="return confirm('This will permanently remove the vehicle. Proceed?')"
+                                            class="btn btn-danger btn-lg">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td colspan="4">
+                                @Html.PagedListPager((IPagedList)Model.Vehicles,
+                               page => Url.Action("ListVehicles", new { page = page }),
+                               PagedListRenderOptions.OnlyShowFivePagesAtATime)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
