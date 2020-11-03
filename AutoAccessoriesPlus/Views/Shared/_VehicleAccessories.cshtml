@@ -1,4 +1,4 @@
-﻿@model AutoAccessoriesPlus.Models.Vehicle
+﻿        @model AutoAccessoriesPlus.Models.Vehicle
 
 <div>
     <hr />   
@@ -8,6 +8,7 @@
                 <td><h3>Name</h3></td>
                 <td><h3>Price</h3></td>
                 <td><h3>Description</h3></td>
+                <td align="center"><h3>Action</h3></td>
             </tr>
         </thead>
         @foreach (var va in Model.VehicleBrandAccessories)
@@ -17,6 +18,12 @@
                     <td><h4>@va.RelatedAccessory.Name</h4></td>
                     <td><h4>@va.RelatedAccessory.Price</h4></td>
                     <td><h4>@va.RelatedAccessory.Description</h4></td>
+                    <td align="center"><button 
+                            onclick="return confirm('This feature is not yet available...')"
+                            class="btn btn-success btn-lg">
+                                Add To Cart
+                        </button>
+                    </td>
                 </tr>
             </tbody>         
          }
