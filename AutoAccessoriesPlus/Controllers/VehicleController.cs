@@ -38,9 +38,11 @@ namespace AutoAccessoriesPlus.Controllers
         {
             bool allowUpload = true;
             const int imgMinimumSize = 512;
+            bool myTestVariable=true;
 
             if (fileToUpload.Length > 0)
-            {
+            {   myTestVariable=false;
+            
                 var postedFileExtension = Path.GetExtension(fileToUpload.FileName);
 
                 //Allow only jpgs, make sure they are readable and have a file size
